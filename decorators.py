@@ -47,3 +47,25 @@ say_hi("Toha")
 #------------------------------------------------------------------------------------------
 #                      Как реализовать декоратор, который может принимать аргументы?
 #------------------------------------------------------------------------------------------ 
+# Чтобы это реализовать, нужно добавить дополнительный уровень вложенности.
+
+def repeat(n):
+    def decoracor(func):
+        def wrapper(*args, **kwargs):
+            print("BEFORE")
+            result = []
+            for _ in range(n):
+                r = func(*args,**kwargs)
+                result.append(r)
+            print("AFTER")
+            return result
+        return wrapper
+    return decoracor
+
+@repeat(3)
+def say_hi(name):
+    print(f"Hi, my name is {name}")
+    return 1
+
+say_hi("Toha")
+        
