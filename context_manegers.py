@@ -17,3 +17,6 @@ class Connection:
     def __exit__(self, exc_type, ecx_val, exc_tb):
         self.connection = 0    
 
+with Connection() as obj:
+    print("копируем файлы из файла...")
+    raise Exception("не хватает бабла...") 
